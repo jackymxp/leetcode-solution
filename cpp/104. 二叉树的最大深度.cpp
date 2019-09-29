@@ -22,7 +22,7 @@ public:
 int main(int argc, char* argv[])
 {
     Solution s;
-    vector<int> arr1 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    vector<int> arr1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
     TreeNode* root = sortedArrayToBST(arr1);
     auto res = s.maxDepth(root);
     cout << res << endl;  
