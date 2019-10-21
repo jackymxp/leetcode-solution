@@ -1,5 +1,5 @@
-#ifndef _LIST_H_
-#define _LIST_H_
+#ifndef LIST_NODE_H
+#define LIST_NODE_H
 
 #include <iostream>
 #include <vector>
@@ -45,4 +45,4 @@ ostream& operator<<(ostream& os, ListNode* l)
 
 
 
-#endif /* _LIST_H_ */
+#endif /* LIST_NODE_H */
