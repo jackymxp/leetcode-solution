@@ -29,7 +29,7 @@ public:
         }
         return res;
     }
-}
+};
 
 
 int main(void)
