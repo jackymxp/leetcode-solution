@@ -71,10 +71,7 @@ private:
 
 int main(void)
 {
-    //vector<int> arr = {-2, 0, 3, -5, 2, -1};
-    vector<int> arr = {};
+    vector<int> arr = {-2, 0, 3, -5, 2, -1};
     NumArray s(arr);
-    cout << s.sumRange(0, 0) << endl;
-    vector<int> aaa(0);
-
+    cout << s.sumRange(0, 3) << endl;
 }
