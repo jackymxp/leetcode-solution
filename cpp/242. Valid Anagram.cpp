@@ -19,6 +19,8 @@ public:
 
 int main(void)
 {
-    string s = "anagram", t = "nagaram";
-    cout << "res = " << s.isAnagram(s, t) << endl;
+    Solution s;
+    string s1 = "anagram", t = "nagaram";
+    cout << "res = " << s.isAnagram(s1, t) << endl;
+    return 0;
 }
