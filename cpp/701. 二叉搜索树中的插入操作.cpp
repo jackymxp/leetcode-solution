@@ -11,6 +11,7 @@
  */
 class Solution {
 public:
+#if 0 
     TreeNode* insertIntoBST(TreeNode* root, int val) {
         if(!root)
             return new TreeNode(val);
@@ -20,6 +21,25 @@ public:
             root->right = insertIntoBST(root->right, val);
         return root;
     }
+#else
+    TreeNode* insertIntoBST(TreeNode* root, int val) {
+        TreeNode* cur = root;
+        TreeNode* par = nullptr;
+        while(cur)
+        {
+            par = cur;
+            if(val < cur->val)
+                cur = cur->left;
+            else if(val > cur->val)
+                cur = cur->right;
+        }
+        if(val < par->val)
+            par->left = new TreeNode(val);
+        else
+            par->right = new TreeNode(val);
+        return root;
+    }
+#endif
 };
 
 

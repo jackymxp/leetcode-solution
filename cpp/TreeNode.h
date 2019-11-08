@@ -14,6 +14,22 @@ struct TreeNode {
     friend ostream& operator<<(ostream& os, TreeNode& l);
 };
 
+
+
+class Node {
+public:
+    int val;
+    vector<Node*> children;
+
+    Node() {}
+
+    Node(int _val, vector<Node*> _children) {
+        val = _val;
+        children = _children;
+    }
+};
+
+
 ostream& operator<<(ostream& os, TreeNode& l)
 {
     os << l.val ;
