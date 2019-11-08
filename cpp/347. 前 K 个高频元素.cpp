@@ -1,6 +1,7 @@
 #include <iostream>
 #include <queue>
 #include <map>
+#include <unordered_map>
 
 using namespace std;
 
@@ -16,8 +17,8 @@ private:
 
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
-        //统计频次
-        map<int, int> mapping;
+        //
+        unordered_map<int, int> mapping;
         for(auto i : nums)
             mapping[i]++;
         
