@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <queue>
 
 using namespace std;
 
@@ -76,6 +77,26 @@ void postOrder(TreeNode* root)
     postOrder(root->left);
     postOrder(root->right);
     cout << root->val << "-->" ;
+}
+
+
+vector<vector<int>> levelOrderBottom(TreeNode* root) {
+    vector<vector<int>> res;
+    if(!root)
+        return res;
+    queue<pair<TreeNode*, int>> q;
+    q.push(make_pair(root, 0));
+    while(!q.empty())
+    {
+        auto p = q.front();
+        q.pop();
+        if(res.size() == p.second)
+            res.push_back(vector<int>());
+        res[p.second].push_back(p.first->val);
+        if(p.first->left)   q.push(make_pair(p.first->left, p.second+1));
+        if(p.first->right)   q.push(make_pair(p.first->right, p.second+1));
+    }
+    return res;
 }
 
 #endif /* TREE_NODE_H */
