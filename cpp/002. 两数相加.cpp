@@ -11,6 +11,7 @@
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+#if 0
         if(!l1 || !l2)
             return l1 ? l1 : l2;
         int flag = 0;
@@ -33,13 +34,28 @@ public:
             p->next = node;
         }
         return dummy->next;
+#else
+        if(!l1 || !l2)
+            return l1 ? l1 : l2;
+        
+        int a = l1 ? l1->val : 0;
+        int b = l2 ? l2->val : 0;
+        
+        ListNode* nextSum = addTwoNumbers(l1->next, l2->next);
+        ListNode* res = new ListNode((a+b)%10);
+        if((a+b) / 10)
+            res->next = addTwoNumbers(new ListNode(1), nextSum);
+        else
+            res->next = nextSum;
+        return res;
+#endif
     }
 };
 
 int main(int argc, char* argv[])
 {
     Solution s;
-    vector<int> arr1 = {9,9};
+    vector<int> arr1 = {9,9,9,9};
     ListNode* p1 = createList(arr1);
     cout << p1 << endl;
 
