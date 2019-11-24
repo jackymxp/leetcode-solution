@@ -1,5 +1,6 @@
 #include "ListNode.h"
 
+#if 1
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -51,6 +52,48 @@ private:
     }
 };
 
+
+
+#else
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        return reverseList(addTwoNumbers2(reverseList(l1), reverseList(l2)));
+    }
+private:
+    ListNode* addTwoNumbers2(ListNode* l1, ListNode* l2) 
+    {
+        if(!l1 || !l2)
+            return l1 ? l1 : l2;
+        int sum = l1->val + l2->val;
+        ListNode* node = new ListNode(sum % 10);
+        ListNode* nextNode = addTwoNumbers2(l1->next, l2->next);
+        
+        if((sum / 10) == 1)
+            node->next = addTwoNumbers2(nextNode, new ListNode(1));
+        else
+            node->next = nextNode;
+        return node;
+        
+    }
+    ListNode* reverseList(ListNode* head) {
+        if(!head || !head->next)
+            return head;
+        ListNode* p = reverseList(head->next);
+        head->next->next = head;
+        head->next = nullptr;
+        return p;
+    }
+};
+#endif
 
 int main(int argc, char* argv[])
 {
