@@ -33,6 +33,10 @@ public:
             ListNode* node = new ListNode(1);
             p->next = node;
         }
+
+        ListNode* retNode = dummy->next;
+        delete dummy;
+        return retNode;
         return dummy->next;
 #else
         if(!l1 || !l2)
