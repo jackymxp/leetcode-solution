@@ -32,7 +32,9 @@ public:
             ListNode* node = new ListNode(1);
             p->next = node;
         }
-        return dummy->next;
+        ListNode* retNode = dummy->next;
+        delete dummy;
+        return retNode;
     }
 };
 
