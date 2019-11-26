@@ -12,6 +12,7 @@
  */
 class Solution {
 public:
+#if 0
     vector<int> inorderTraversal(TreeNode* root) {
         vector<int> res;
         if(!root)
@@ -32,6 +33,33 @@ public:
         }
         return res;
     }
+#else
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> res;
+        if(!root)
+            return res;
+        stack<TreeNode*> s;
+        TreeNode* cur = root;
+        while(1)
+        {
+            if(cur)
+            {
+                s.push(cur);
+                cur = cur->left;
+            }
+            else
+            {
+                if(s.empty())
+                    break;
+                res.push_back(s.top()->val);
+                cur = s.top();
+                s.pop();
+                cur = cur->right;
+            }
+        }
+        return res;
+    }
+#endif
 };
 
 int main(int argc, char* argv[])
@@ -40,6 +68,7 @@ int main(int argc, char* argv[])
     vector<int> arr1 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     TreeNode* root = sortedArrayToBST(arr1);
     vector<int> res = s.inorderTraversal(root);
+    DisTree dt(root);
     for(auto i : res)
         cout << i << " ";
     return 0;
