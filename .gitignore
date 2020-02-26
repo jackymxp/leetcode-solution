@@ -1,5 +1,5 @@
 *.exe
 **/.vscode
 a.out/
-./cpp/a.out
+./cpp/*.out
 .DS_Store
