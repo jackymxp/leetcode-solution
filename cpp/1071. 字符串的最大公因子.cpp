@@ -24,7 +24,8 @@ private:
     int gcd(int a, int b)
     {
         //return __gcd(a, b);
-        assert(a != 0 || b != 0);
+        if(a == 0 || b == 0)
+            return a ? a : b;
         if(a == b)
             return a;
         else if(a < b)
