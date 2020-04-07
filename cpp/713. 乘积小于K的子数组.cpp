@@ -1,3 +1,8 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
 class Solution {
 public:
     int numSubarrayProductLessThanK(vector<int>& nums, int k) {
@@ -22,3 +27,8 @@ public:
         return res;
     }
 };
+
+
+int main(void){
+    Solution s;
+}
