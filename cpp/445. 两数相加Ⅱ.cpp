@@ -1,6 +1,51 @@
 #include "ListNode.h"
-
+#include <stack>
+using namespace std;
 #if 1
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        stack<int> s1;
+        stack<int> s2;
+        while(l1){
+            s1.push(l1->val);
+            l1 = l1->next;
+        }
+        while(l2){
+            s2.push(l2->val);
+            l2 = l2->next;
+        }
+        int flag = 0;
+        cout << "=====" << endl;
+        ListNode* dy = new ListNode(-1);
+        ListNode* retNode = dy;
+        while(!s1.empty() || !s2.empty() || flag > 0)
+        {
+            int a = s1.empty() == true ? 0 : s1.top();
+            int b = s2.empty() == true ? 0 : s2.top();
+            cout << "a = " << a << "  b = " << b << endl;
+            s1.pop(), s2.pop();
+            int sum = a + b + flag;
+            flag = sum / 10;
+            ListNode* newNode = new ListNode(sum % 10);
+            dy->next = newNode;
+            dy = newNode;
+        }
+        return retNode->next;
+    }
+};
+
+
+
+#elif 0
 /**
  * Definition for singly-linked list.
  * struct ListNode {
