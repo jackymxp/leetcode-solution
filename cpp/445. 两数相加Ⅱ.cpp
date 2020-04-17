@@ -13,8 +13,7 @@ using namespace std;
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        stack<int> s1;
-        stack<int> s2;
+        stack<int> s1, s2;
         while(l1){
             s1.push(l1->val);
             l1 = l1->next;
@@ -24,26 +23,23 @@ public:
             l2 = l2->next;
         }
         int flag = 0;
-        cout << "=====" << endl;
-        ListNode* dy = new ListNode(-1);
-        ListNode* retNode = dy;
+        ListNode* dy = nullptr;
+        ListNode* newNode = nullptr;
         while(!s1.empty() || !s2.empty() || flag > 0)
         {
             int a = s1.empty() == true ? 0 : s1.top();
             int b = s2.empty() == true ? 0 : s2.top();
-            cout << "a = " << a << "  b = " << b << endl;
-            s1.pop(), s2.pop();
+            if(!s1.empty()) s1.pop();
+            if(!s2.empty()) s2.pop();
             int sum = a + b + flag;
             flag = sum / 10;
-            ListNode* newNode = new ListNode(sum % 10);
-            dy->next = newNode;
+            newNode = new ListNode(sum % 10);
+            newNode->next = dy;
             dy = newNode;
         }
-        return retNode->next;
+        return newNode;
     }
 };
-
-
 
 #elif 0
 /**
